@@ -1,0 +1,8 @@
+﻿<Window x:Name="windowPageSwitcher" x:Class="LearningBox.PageSwitcher"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="جعبه یادگیری" Height="638" Width="816" ResizeMode="CanResizeWithGrip"
+        SizeToContent="WidthAndHeight" FlowDirection="RightToLeft" HorizontalContentAlignment="Right" Padding="0,0,0,0"  HorizontalAlignment="Right" Icon="Images/cloudservice.ico" Background="#FF0C0B0B">
+
+</Window>
+<!--FontStyle="Oblique"-->

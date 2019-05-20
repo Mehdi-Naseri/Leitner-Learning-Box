@@ -1,0 +1,49 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LearningBox.Pages"
+             xmlns:learningBox="clr-namespace:LearningBox"
+             xmlns:dbContext="clr-namespace:LearningBox.Data.DbContext"
+             x:Name="UserControlBoxes" x:Class="LearningBox.Pages.Boxes"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300" Loaded="UserControlBoxes_Loaded" FlowDirection="RightToLeft" >
+    <Grid Background="White" MinWidth="300" MinHeight="250" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <learningBox:MainMenu VerticalAlignment="Top" Grid.Row="0"/>
+        <Border  Grid.Row="1" Background="LightBlue" />
+
+        <Label x:Name="labelActiveBox" Content="جعبه فعال:" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top" Grid.Row="1" HorizontalContentAlignment="Right"/>
+        <ComboBox x:Name="comboBoxActivebox" HorizontalAlignment="Left" Margin="78,9,0,0" VerticalAlignment="Top" Grid.Row="1" Width="119" SelectionChanged="comboBoxActivebox_SelectionChanged">
+            <ComboBox.ItemBindingGroup>
+                <BindingGroup/>
+            </ComboBox.ItemBindingGroup>
+            <ComboBox.BindingGroup>
+                <BindingGroup/>
+            </ComboBox.BindingGroup>
+        </ComboBox>
+
+        <Button x:Name="buttonCreateBox" Content="ایجاد" HorizontalAlignment="Left" Margin="19,63,0,0" Grid.Row="2" VerticalAlignment="Top" Width="75" Click="buttonCreateBox_Click"/>
+        <Button x:Name="buttonUpdateBox" Content="ویرایش" HorizontalAlignment="Left" Margin="109,63,0,0" Grid.Row="2" VerticalAlignment="Top" Width="75" Click="buttonUpdateBox_Click"/>
+        <Button x:Name="buttonDeleteBox" Content="حذف" HorizontalAlignment="Left" Margin="202,63,0,0" Grid.Row="2" VerticalAlignment="Top" Width="75" Click="buttonDeleteBox_Click"/>
+        <TextBox x:Name="textBoxBoxName" HorizontalAlignment="Left" Height="23" Margin="78,32,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="119" Text="{Binding SelectedItem.Name, ElementName=dataGridBoxes, Mode=TwoWay, UpdateSourceTrigger=Explicit}"/>
+        <Label x:Name="label" Content="نام جعبه:" HorizontalAlignment="Left" Margin="19,32,0,0" Grid.Row="2" VerticalAlignment="Top" HorizontalContentAlignment="Right"/>
+        <DataGrid x:Name="dataGridBoxes" Margin="5,89,5,5" Grid.Row="2" HorizontalContentAlignment="Stretch" MinHeight="100" AutoGenerateColumns="False" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="نام جعبه"  Width="200" Binding="{Binding Name}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label x:Name="labelBoxNumber" Content="شماره جعبه:" HorizontalAlignment="Left" Margin="5,4,0,0" Grid.Row="2" VerticalAlignment="Top" IsEnabled="False"/>
+        <TextBox x:Name="textBoxBoxNumber" HorizontalAlignment="Left" Height="23" Margin="78,4,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="43" IsReadOnly="True" Text="{Binding SelectedItem.Id, ElementName=dataGridBoxes}" IsEnabled="False" TextChanged="textBoxBoxNumber_TextChanged"/>
+    </Grid>
+</UserControl>
+<!--Binding="{Binding Boxes.Name}"-->
+<!--<DataGrid.Columns>
+    <DataGridTextColumn Header="نام جعبه"  Width="300*"/>
+</DataGrid.Columns>-->
